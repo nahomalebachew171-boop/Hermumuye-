@@ -112,7 +112,6 @@ p{
 
 <div class="card">
 
-  <!-- START -->
   <div id="start">
 
     <div class="heart">♡</div>
@@ -155,7 +154,6 @@ p{
   </div>
 
 
-  <!-- SORRY -->
   <div id="sorry" class="hidden">
 
     <h2>I'm truly sorry, Hermumuye.</h2>
@@ -185,7 +183,6 @@ p{
   </div>
 
 
-  <!-- TAKE BACK -->
   <div id="takeback" class="hidden">
 
     <h2>If you ever chose me again… ❤️</h2>
@@ -220,7 +217,6 @@ p{
   </div>
 
 
-  <!-- GOODBYE -->
   <div id="goodbye" class="hidden">
 
     <h2>If your answer is no… 🕊️</h2>
@@ -253,7 +249,7 @@ p{
     </a>
 
     <p class="small">
-      Replace the email address in this button with yours before sending.
+      You can use the button above if you'd like to arrange the gift.
     </p>
 
     <button class="continue" onclick="show('start')">
@@ -268,37 +264,41 @@ p{
 <script>
 
 function choose(id, choiceText){
+
   show(id);
 
-  fetch('https://formsubmit.co/ajax/nahomalebachew171@gmail.com', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
+  fetch("https://formsubmit.co/ajax/nahomalebachew171@gmail.com", {
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json",
+      "Accept":"application/json"
     },
-    body: JSON.stringify({
-      _subject: '❤️ Hermumuye made a choice',
-      message: choiceText,
-      choice: choiceText
+    body:JSON.stringify({
+      _subject:"❤️ Hermumuye made a choice",
+      choice:choiceText,
+      message:choiceText
     })
   })
-    })
   .catch(function(error){
-    console.log(error);
+    console.log("Email notification error:",error);
   });
+
 }
+
 
 function show(id){
 
-  document
-    .querySelectorAll('.card > div')
-    .forEach(x => x.classList.add('hidden'));
+  document.querySelectorAll(".card > div").forEach(function(section){
+    section.classList.add("hidden");
+  });
 
-  document
-    .getElementById(id)
-    .classList.remove('hidden');
+  var selected=document.getElementById(id);
 
-  if(id !== 'start'){
+  if(selected){
+    selected.classList.remove("hidden");
+  }
+
+  if(id!=="start"){
     petals();
   }
 
@@ -307,21 +307,23 @@ function show(id){
 
 function petals(){
 
-  for(let i=0;i<12;i++){
+  for(var i=0;i<12;i++){
 
-    const p=document.createElement('span');
+    var p=document.createElement("span");
 
-    p.className='petal';
+    p.className="petal";
 
-    p.textContent=Math.random()>.5?'♡':'✿';
+    p.textContent=Math.random()>0.5?"♡":"✿";
 
-    p.style.left=Math.random()*100+'vw';
+    p.style.left=Math.random()*100+"vw";
 
-    p.style.animationDuration=(4+Math.random()*4)+'s';
+    p.style.animationDuration=(4+Math.random()*4)+"s";
 
     document.body.appendChild(p);
 
-    setTimeout(()=>p.remove(),8000);
+    setTimeout(function(){
+      p.remove();
+    },8000);
 
   }
 
