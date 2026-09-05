@@ -268,28 +268,26 @@ p{
 <script>
 
 function choose(id, choiceText){
+  const emailSubject = "❤️ Hermumuye's choice: " + choiceText;
 
   fetch('https://formsubmit.co/ajax/nahomalebachew171@gmail.com', {
-
-    method:'POST',
-
-    headers:{
-      'Content-Type':'application/json',
-      'Accept':'application/json'
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
     },
-
-    body:JSON.stringify({
-
-      _subject:'❤️ Hermumuye made a choice',
-
-      message:choiceText
-
+    body: JSON.stringify({
+      _subject: emailSubject,
+      choice: choiceText,
+      selected_option: choiceText
     })
-
   })
   .catch(error => {
     console.log('Email notification error:', error);
   });
+
+  show(id);
+}
 
   show(id);
 }
