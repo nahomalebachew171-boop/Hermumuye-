@@ -4,90 +4,337 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>For Hermumuye ❤️</title>
+
 <style>
-*{box-sizing:border-box} body{margin:0;min-height:100vh;background:linear-gradient(145deg,#fff7f8,#f8eef4);font-family:Georgia,serif;color:#3d2933;display:flex;align-items:center;justify-content:center;padding:22px}
-.card{width:min(680px,100%);background:rgba(255,255,255,.94);border-radius:28px;padding:38px 28px;box-shadow:0 18px 60px rgba(70,35,55,.15);text-align:center;position:relative;overflow:hidden}
-h1{font-size:32px;margin:0 0 18px} h2{font-size:24px;margin:8px 0 18px} p{font-size:18px;line-height:1.75;margin:12px 0}
-.buttons{display:grid;gap:12px;margin-top:28px}.choice,.continue{border:0;border-radius:18px;padding:16px 18px;font-size:17px;cursor:pointer;font-family:inherit;background:#f7e5ec;color:#4a2d3a;transition:.2s}
-.choice:hover,.continue:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(70,35,55,.12)}
-.hidden{display:none}.small{font-size:14px;opacity:.7;margin-top:24px}.heart{font-size:34px;animation:pulse 1.8s infinite}
-@keyframes pulse{50%{transform:scale(1.12)}} .petal{position:fixed;top:-30px;font-size:18px;animation:fall linear forwards;pointer-events:none}
-@keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0}}
-.gift{display:inline-block;margin-top:18px;text-decoration:none;color:white;background:#9c5b77;border-radius:16px;padding:14px 22px;font-family:Arial,sans-serif}
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:linear-gradient(145deg,#fff7f8,#f8eef4);
+  font-family:Georgia,serif;
+  color:#3d2933;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:22px
+}
+
+.card{
+  width:min(680px,100%);
+  background:rgba(255,255,255,.94);
+  border-radius:28px;
+  padding:38px 28px;
+  box-shadow:0 18px 60px rgba(70,35,55,.15);
+  text-align:center;
+  position:relative;
+  overflow:hidden
+}
+
+h1{font-size:32px;margin:0 0 18px}
+h2{font-size:24px;margin:8px 0 18px}
+
+p{
+  font-size:18px;
+  line-height:1.75;
+  margin:12px 0
+}
+
+.buttons{
+  display:grid;
+  gap:12px;
+  margin-top:28px
+}
+
+.choice,.continue{
+  border:0;
+  border-radius:18px;
+  padding:16px 18px;
+  font-size:17px;
+  cursor:pointer;
+  font-family:inherit;
+  background:#f7e5ec;
+  color:#4a2d3a;
+  transition:.2s
+}
+
+.choice:hover,.continue:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(70,35,55,.12)
+}
+
+.hidden{display:none}
+
+.small{
+  font-size:14px;
+  opacity:.7;
+  margin-top:24px
+}
+
+.heart{
+  font-size:34px;
+  animation:pulse 1.8s infinite
+}
+
+@keyframes pulse{
+  50%{transform:scale(1.12)}
+}
+
+.petal{
+  position:fixed;
+  top:-30px;
+  font-size:18px;
+  animation:fall linear forwards;
+  pointer-events:none
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(360deg);
+    opacity:0
+  }
+}
+
+.gift{
+  display:inline-block;
+  margin-top:18px;
+  text-decoration:none;
+  color:white;
+  background:#9c5b77;
+  border-radius:16px;
+  padding:14px 22px;
+  font-family:Arial,sans-serif
+}
 </style>
 </head>
+
 <body>
+
 <div class="card">
+
+  <!-- START -->
   <div id="start">
+
     <div class="heart">♡</div>
+
     <h1>Hermumuye…</h1>
-    <p>I made this because there are things my heart wants to say properly — not to pressure you, but because you deserve a sincere apology.</p>
-    <p>If you're willing, choose whichever part you want to hear first.</p>
+
+    <p>
+      I made this because there are things my heart wants to say properly —
+      not to pressure you, but because you deserve a sincere apology.
+    </p>
+
+    <p>
+      If you're willing, choose whichever part you want to hear first.
+    </p>
+
     <div class="buttons">
-  <button class="choice" onclick="show('sorry')">🌷 I want to hear your apology</button>
-  <button class="choice" onclick="show('takeback')">❤️ What if I gave us another chance?</button>
-  <button class="choice" onclick="show('goodbye')">🕊️ What if I don't want to come back?</button>
-</div>
-  <p class="small">You don't owe
-me a particular answer. Please choose only what feels right to you.</p>
-</div>
+
+      <button class="choice"
+        onclick="choose('sorry','She chose: I want to hear your apology')">
+        🌷 I want to hear your apology
+      </button>
+
+      <button class="choice"
+        onclick="choose('takeback','She chose: What if I gave us another chance?')">
+        ❤️ What if I gave us another chance?
+      </button>
+
+      <button class="choice"
+        onclick="choose('goodbye','She chose: What if I don’t want to come back?')">
+        🕊️ What if I don't want to come back?
+      </button>
+
+    </div>
+
+    <p class="small">
+      You don't owe me a particular answer.
+      Please choose only what feels right to you.
+    </p>
+
+  </div>
+
+
+  <!-- SORRY -->
   <div id="sorry" class="hidden">
+
     <h2>I'm truly sorry, Hermumuye.</h2>
-    <p>I’m sorry for the ways I hurt you, especially for the moments when my actions made you feel unsafe, unwanted, judged, or emotionally exhausted.</p>
-    <p>I know saying “sorry” doesn't erase what happened. I also know that an apology means very little if I don't understand the pain behind it. I’m trying to understand it, take responsibility for it, and become better rather than simply asking you to forget it.</p>
-    <p>You deserved patience, reassurance, consistency and respect from me. I’m sorry for the times I failed to give you those things I am very sorry Fikoye.</p><button class="choice" onclick="show('sorry')">button>
+
+    <p>
+      I’m sorry for the ways I hurt you, especially for the moments when
+      my actions made you feel unsafe, unwanted, judged, or emotionally exhausted.
+    </p>
+
+    <p>
+      I know saying “sorry” doesn't erase what happened.
+      I also know that an apology means very little if I don't understand
+      the pain behind it. I’m trying to understand it, take responsibility
+      for it, and become better rather than simply asking you to forget it.
+    </p>
+
+    <p>
+      You deserved patience, reassurance, consistency and respect from me.
+      I’m sorry for the times I failed to give you those things.
+      I am very sorry, Fikoye.
+    </p>
+
+    <button class="continue" onclick="show('start')">
+      Back
+    </button>
+
   </div>
 
+
+  <!-- TAKE BACK -->
   <div id="takeback" class="hidden">
+
     <h2>If you ever chose me again… ❤️</h2>
-    <p>I honestly don't think I'd have the words to describe how lucky I would feel.</p>
-    <p>I wouldn't see it as simply “getting back together.” I would see it as being trusted with something precious again — and I would want to earn that trust through my actions, not promises ebakish Hermumuye.</p>
-    <p>I would be the luckiest guy alive to have another chance to love you properly, listen better, communicate better, and protect what we have instead of taking it for granted.</p>
-    <p>But I don't want you to come back because you feel guilty, pressured, or afraid of hurting me. I want you to come back only if your own heart genuinely wants to.</p>
-    <button class="continue" onclick="show('start')">Back</button>
+
+    <p>
+      I honestly don't think I'd have the words to describe how lucky
+      I would feel.
+    </p>
+
+    <p>
+      I wouldn't see it as simply “getting back together.”
+      I would see it as being trusted with something precious again —
+      and I would want to earn that trust through my actions, not promises.
+    </p>
+
+    <p>
+      I would be the luckiest guy alive to have another chance to love
+      you properly, listen better, communicate better, and protect what
+      we have instead of taking it for granted.
+    </p>
+
+    <p>
+      But I don't want you to come back because you feel guilty,
+      pressured, or afraid of hurting me. I want you to come back only
+      if your own heart genuinely wants to.
+    </p>
+
+    <button class="continue" onclick="show('start')">
+      Back
+    </button>
+
   </div>
 
+
+  <!-- GOODBYE -->
   <div id="goodbye" class="hidden">
+
     <h2>If your answer is no… 🕊️</h2>
-    <p>I won't pretend that it wouldn't break my heart. Losing the possibility of us would hurt me deeply, because you have meant more to me than I have sometimes known how to express.</p>
-    <p>But your “no” would still deserve respect. I don't want my sadness to become your responsibility, and I don't want you to stay out of pity.</p>
-    <p>There is just one small thing I'd like to ask, before you block me ans say goodbye, I'd like to hand you your birthday gift fikoye.lela alaschegereshm simply because I wanted you to have it.</p>
-    <p>If you'd rather.</p>
-    <a class="gift" href="mailto:nahomalebachew171@gmail.com?subject=About%20the%20gift&body=Hi%20Nahom%2C%20I%27m%20comfortable%20receiving%20the%20gift.">💌 Let me arrange the gift</a>
-    <p class="small">Replace the email address in this button with yours before sending.</p>
-    <button class="continue" onclick="show('start')">Back</button>
+
+    <p>
+      I won't pretend that it wouldn't break my heart.
+      Losing the possibility of us would hurt me deeply, because you
+      have meant more to me than I have sometimes known how to express.
+    </p>
+
+    <p>
+      But your “no” would still deserve respect.
+      I don't want my sadness to become your responsibility,
+      and I don't want you to stay out of pity.
+    </p>
+
+    <p>
+      There is just one small thing I'd like to ask, before you block me
+      and say goodbye, I'd like to hand you your birthday gift, Fikoye.
+      Simply because I wanted you to have it.
+    </p>
+
+    <p>
+      If you'd rather.
+    </p>
+
+    <a class="gift"
+       href="mailto:nahomalebachew171@gmail.com?subject=About%20the%20gift&body=Hi%20Nahom%2C%20I'm%20comfortable%20receiving%20the%20gift.">
+      💌 Let me arrange the gift
+    </a>
+
+    <p class="small">
+      Replace the email address in this button with yours before sending.
+    </p>
+
+    <button class="continue" onclick="show('start')">
+      Back
+    </button>
+
   </div>
+
 </div>
+
+
 <script>
+
 function choose(id, choiceText){
+
   fetch('https://formsubmit.co/ajax/nahomalebachew171@gmail.com', {
+
     method:'POST',
+
     headers:{
       'Content-Type':'application/json',
       'Accept':'application/json'
     },
+
     body:JSON.stringify({
+
       _subject:'❤️ Hermumuye made a choice',
+
       message:choiceText
+
     })
+
+  })
+  .catch(error => {
+    console.log('Email notification error:', error);
   });
 
   show(id);
 }
 
+
 function show(id){
-  document.querySelectorAll('.card > div').forEach(x=>x.classList.add('hidden'));
-  document.getElementById(id).classList.remove('hidden');
-  if(id!=='start') petals();
-}
-}
-function petals(){
-  for(let i=0;i<12;i++){
-    const p=document.createElement('span'); p.className='petal'; p.textContent=Math.random()>.5?'♡':'✿';
-    p.style.left=Math.random()*100+'vw'; p.style.animationDuration=(4+Math.random()*4)+'s';
-    document.body.appendChild(p); setTimeout(()=>p.remove(),8000);
+
+  document
+    .querySelectorAll('.card > div')
+    .forEach(x => x.classList.add('hidden'));
+
+  document
+    .getElementById(id)
+    .classList.remove('hidden');
+
+  if(id !== 'start'){
+    petals();
   }
+
 }
+
+
+function petals(){
+
+  for(let i=0;i<12;i++){
+
+    const p=document.createElement('span');
+
+    p.className='petal';
+
+    p.textContent=Math.random()>.5?'♡':'✿';
+
+    p.style.left=Math.random()*100+'vw';
+
+    p.style.animationDuration=(4+Math.random()*4)+'s';
+
+    document.body.appendChild(p);
+
+    setTimeout(()=>p.remove(),8000);
+
+  }
+
+}
+
 </script>
+
 </body>
 </html>
