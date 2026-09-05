@@ -24,12 +24,11 @@ h1{font-size:32px;margin:0 0 18px} h2{font-size:24px;margin:8px 0 18px} p{font-s
     <p>I made this because there are things my heart wants to say properly — not to pressure you, but because you deserve a sincere apology.</p>
     <p>If you're willing, choose whichever part you want to hear first.</p>
     <div class="buttons">
-      <button class="choice" onclick="show('sorry')">
-      <button class="choice" onclick="show('takeback')">❤️ What if I gave us another chance?</button>
-      <button class="choice" onclick="show('goodbye')">🕊️ What if I don't want to come back?</button>
-    </div>
-    <p class="small">You don't owe me a particular answer. Please choose only what feels right to you.</p>
-  </div>
+  <button class="choice" onclick="show('sorry')">🌷 I want to hear your apology</button>
+  <button class="choice" onclick="show('takeback')">❤️ What if I gave us another chance?</button>
+  <button class="choice" onclick="show('goodbye')">🕊️ What if I don't want to come back?</button>
+</div>
+  
 
   <div id="sorry" class="hidden">
     <h2>I'm truly sorry, Hermumuye.</h2>
@@ -59,10 +58,27 @@ h1{font-size:32px;margin:0 0 18px} h2{font-size:24px;margin:8px 0 18px} p{font-s
   </div>
 </div>
 <script>
+function choose(id, choiceText){
+  fetch('https://formsubmit.co/ajax/nahomalebachew171@gmail.com', {
+    method:'POST',
+    headers:{
+      'Content-Type':'application/json',
+      'Accept':'application/json'
+    },
+    body:JSON.stringify({
+      _subject:'❤️ Hermumuye made a choice',
+      message:choiceText
+    })
+  });
+
+  show(id);
+}
+
 function show(id){
   document.querySelectorAll('.card > div').forEach(x=>x.classList.add('hidden'));
   document.getElementById(id).classList.remove('hidden');
   if(id!=='start') petals();
+}
 }
 function petals(){
   for(let i=0;i<12;i++){
